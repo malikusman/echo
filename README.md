@@ -95,3 +95,10 @@ Tests can be executed by running `rspec` within the project directory.
 
 - **Localization**: Error messages and other strings are localized (only en for now)
 
+## Accessing the Code
+
+The source code for the project is available in a shared Dropbox folder. You can access and download the files using the following link:
+
+[Access Project Files](https://www.dropbox.com/scl/fo/3nc2jegoxs0qdm8gc2gzx/AB7hPcQNg9poV-q7A5vIoSo?rlkey=h1wr6k1h5n2tptkw39q27jlr7&dl=0)
+
+Please ensure you have appropriate permissions to view or download the files.

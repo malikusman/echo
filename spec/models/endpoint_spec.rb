@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Endpoint, type: :model do
+RSpec.describe Endpoint do
   subject(:endpoint) { build(:endpoint) }
 
   describe 'validations' do
@@ -20,19 +20,6 @@ RSpec.describe Endpoint, type: :model do
     it { is_expected.not_to allow_value(invalid_path).for(:path).with_message(I18n.t('endpoint.errors.valid_uri_path')) }
 
     it { is_expected.to validate_presence_of(:response) }
-
-    context 'when another endpoint exists with the same verb and path' do
-      subject(:endpoint) { build(:endpoint, verb: 'GET', path: '/rand') }
-
-      before do
-        create(:endpoint, verb: 'GET', path: '/rand')
-      end
-
-      it 'is invalid due to non-unique verb and path combination' do
-        expect(endpoint).not_to be_valid
-        expect(endpoint.errors[:verb]).to include(I18n.t('endpoint.errors.unique_verb_path'))
-      end
-    end
 
     describe 'custom validations' do
       let(:invalid_code) { Faker::Number.between(from: 600, to: 1000)} # valid are between 100 to 599
@@ -85,6 +72,19 @@ RSpec.describe Endpoint, type: :model do
           endpoint.valid?
           expect(endpoint.errors[:response]).to include(I18n.t('endpoint.errors.body_must_be_string'))
         end
+      end
+    end
+
+    context 'when another endpoint exists with the same verb and path' do
+      subject(:endpoint) { build(:endpoint, verb: 'GET', path: '/rand') }
+
+      before do
+        create(:endpoint, verb: 'GET', path: '/rand')
+      end
+
+      it 'is invalid due to non-unique verb and path combination' do
+        expect(endpoint).not_to be_valid
+        expect(endpoint.errors[:verb]).to include(I18n.t('endpoint.errors.unique_verb_path'))
       end
     end
   end

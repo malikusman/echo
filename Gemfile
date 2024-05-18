@@ -33,6 +33,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mswin mswin64 mingw x64_mingw]
   gem 'factory_bot_rails' # fixtures replacement with own DSL
   gem 'faker' # a library for generating fake
+  gem 'rack-test', require: 'rack/test' # for rack request tests
   gem 'rspec-rails' # RSpec testing framework
   gem 'rubocop', require: false # static code analyzer and formatter
   gem 'rubocop-rails', require: false # RuboCop extension for Rails
@@ -45,3 +46,5 @@ group :development do
 
   gem 'error_highlight', '>= 0.4.0', platforms: [:ruby]
 end
+
+gem 'byebug', '~> 11.1', groups: %i[development test]

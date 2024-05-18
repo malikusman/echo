@@ -9,3 +9,6 @@ en:
       body_must_be_string: body must be a string
       valid_uri_path: must be a valid URI path
       unique_verb_path: the combination of verb and path must be unique
+      endpoint_not_fount: endpoint not found
+      endpoint_missing_parameters: missing parameter error
+      missing_parameters: "Missing required parameters: %{keys}"
